@@ -1,28 +1,33 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <button @click="showTips">弹出tip</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
 export default {
   name: "App",
-  components: {
-    HelloWorld
-  }
+  methods: {
+    /** 
+      content：内容 必传
+      position：显示位置 topRight topLeft bottomRight bottomLeft top bottom
+      timeout：显示时间 默认5秒
+      type: 类型 success error default
+      btnText: 定义关闭按钮内容 默认✖
+      center：内容是否居中显示 默认不居中
+      showClose：是否可关闭 默认可以
+    **/
+    showTips() {
+      this.$notify({
+        content: "这是一条提示消息",
+        timeout: 3,
+        position: "top",
+        type: "success",
+      });
+    },
+  },
 };
 </script>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style>
 </style>
